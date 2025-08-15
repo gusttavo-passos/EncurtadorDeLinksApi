@@ -1,6 +1,6 @@
 import UserEntity from "../../entitites/user.entity";
 import CreateUserRepositoryDto from "../../repositories/user/dtos/create-user.repository.dto";
-import type LoginUserRepositoryDto from "../../repositories/user/dtos/login-user.repository.dto";
+import LoginUserRepositoryDto from "../../repositories/user/dtos/login-user.repository.dto";
 import UserRepository from "../../repositories/user/user.repository";
 
 export default class UserService {

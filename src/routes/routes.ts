@@ -1,4 +1,5 @@
-import { Router } from "express";
+// src/routes/index.ts
+import { Router, Request, Response } from "express";
 import LinkController from "../controllers/link.controller";
 import LinkService from "../services/link/link.service";
 import LinkRepository from "../repositories/link/link.repository";
@@ -8,21 +9,19 @@ import UserService from "../services/user/user.service";
 
 const router = Router();
 
-//Links Repositories, Services and Controllers
+// === Links Repositories, Services and Controllers ===
 const linkRepository = new LinkRepository();
-const linkService = new LinkService(linkRepository)
+const linkService = new LinkService(linkRepository);
 const linkController = new LinkController(linkService);
 
-// User Repositories, Services and Controllers
+// === User Repositories, Services and Controllers ===
 const userRepository = new UserRepository();
 const userService = new UserService(userRepository);
 const userController = new UserController(userService);
 
-//Links Routes
-router.get("/link", linkController.getLinkById);
+router.get("/:id", linkController.getLinkShortUrl);
 router.post("/link", linkController.createLink);
 
-//User Routes
 router.get("/user", userController.loginUser);
 router.post("/user", userController.createUser);
 

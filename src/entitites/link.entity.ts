@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const LinkEntityTypeSchema = z.object({
-  id: z.uuid(),
+  id: z.string(),
   userId: z.uuid(), 
   url: z.url(),
   shortUrl: z.string().min(1),
@@ -21,10 +21,10 @@ export class LinkEntity {
 
 
   constructor(url: LinkEntityType["url"], userId: LinkEntityType["userId"]) {
-    this.id = crypto.randomUUID();
+    this.id = crypto.randomUUID().slice(0, 4);
     this.url = url;
     this.userId = userId;
-    this.shortUrl = `short.ly/${(this.id).slice(0, 4)}`;
+    this.shortUrl = `http://localhost:3001/${(this.id)}`;
     this.createdAt = new Date();
   }
 }

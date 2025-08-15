@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-import type UserService from "../services/user/user.service";
+import UserService from "../services/user/user.service";
 
 export default class UserController {
   constructor(
     private readonly userService: UserService
   ){}
 
-  async createUser(req: Request, res: Response): Promise<Response> {
+  createUser = async (req: Request, res: Response): Promise<Response> => {
     try {
       const user = await this.userService.createUser(req.body);
       return res.status(201).json(user);
@@ -15,7 +15,7 @@ export default class UserController {
     }
   }
 
-  async loginUser(req: Request, res: Response): Promise<Response> {
+  loginUser = async (req: Request, res: Response): Promise<Response> => {
     try {
       const user = await this.userService.loginUser(req.body);
       if (!user) {
