@@ -24,7 +24,7 @@ export class LinkEntity {
     this.id = crypto.randomUUID().slice(0, 4);
     this.url = url;
     this.userId = userId;
-    this.shortUrl = `http://localhost:3001/${(this.id)}`;
+    this.shortUrl = `https://encurtadordelinksapi.onrender.com/${(this.id)}`;
     this.createdAt = new Date();
   }
 }
