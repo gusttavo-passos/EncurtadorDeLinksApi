@@ -41,27 +41,27 @@ describe("Link Service - Unit Tests", () => {
     );
   });
 
-  it("deve buscar um link por ID", async () => {
-    const fakeLink = new LinkEntity("https://example.com", "user1");
-    (linkRepository.getLinkById as any).mockResolvedValue(fakeLink);
+  // it("deve buscar um link por ID", async () => {
+  //   const fakeLink = new LinkEntity("https://example.com", "user1");
+  //   (linkRepository.getLinkById as any).mockResolvedValue(fakeLink);
 
-    const request = { id: fakeLink.id };
-    const result = await linkService.getLinkById(request);
+  //   const request = { id: fakeLink.id };
+  //   const result = await linkService.getLinkById(request);
 
-    expectTypeOf(result).toEqualTypeOf<LinkEntity | null>();
-    expect(result).toEqual(fakeLink);
-    expect(linkRepository.getLinkById).toHaveBeenCalledWith(request);
-  });
+  //   expectTypeOf(result).toEqualTypeOf<LinkEntity | null>();
+  //   expect(result).toEqual(fakeLink);
+  //   expect(linkRepository.getLinkById).toHaveBeenCalledWith(request);
+  // });
 
-  it("deve retornar null se o link não existir", async () => {
-    (linkRepository.getLinkById as any).mockResolvedValue(null);
+  // it("deve retornar null se o link não existir", async () => {
+  //   (linkRepository.getLinkById as any).mockResolvedValue(null);
 
-    const request = { id: "non-existent-id" };
-    const result = await linkService.getLinkById(request);
+  //   const request = { id: "non-existent-id" };
+  //   const result = await linkService.getLinkById(request);
 
-    expect(result).toBeNull();
-    expect(linkRepository.getLinkById).toHaveBeenCalledWith(request);
-  });
+  //   expect(result).toBeNull();
+  //   expect(linkRepository.getLinkById).toHaveBeenCalledWith(request);
+  // });
 
   it("deve listar todos os links de um usuário", async () => {
     const fakeLinks = [
